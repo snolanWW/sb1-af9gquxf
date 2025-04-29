@@ -1,0 +1,127 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply text-gray-900;
+  }
+}
+
+@layer components {
+  .container {
+    @apply max-w-7xl mx-auto;
+  }
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.hero-offset-box {
+  position: absolute;
+  top: 32px;
+  left: 32px;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(62deg, 
+    #ffffff,
+    #fff2cc,
+    #ffe599,
+    #ffe9a4,
+    #ffd966,
+    #e5d29a,
+    #B78628
+  );
+  background-size: 400% 400%;
+  animation: gradient 6s linear infinite;
+  z-index: 0;
+  opacity: 0.8;
+}
+
+.hero-offset-box::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(139, 105, 20, 0.3)
+  );
+  pointer-events: none;
+}
+
+.feature-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.feature-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: 0.5s;
+}
+
+.feature-card:hover::before {
+  left: 100%;
+}
+
+.glow-effect {
+  animation: pulse-glow 2s infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.wavy-gradient-border {
+  position: relative;
+}
+
+.wavy-gradient-border::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, 
+    #ffffff,
+    #fff2cc,
+    #ffe599,
+    #ffe9a4,
+    #ffd966,
+    #e5d29a,
+    #B78628
+  );
+  background-size: 200% 200%;
+  animation: gradient 4s linear infinite;
+  clip-path: url(#wave);
+}
